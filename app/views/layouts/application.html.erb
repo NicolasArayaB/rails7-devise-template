@@ -11,12 +11,13 @@
   </head>
 
   <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
+    <%= render 'layouts/nav_bar' %>
+    <% if flash.any? %>
+      <% flash.each do |key, value| -%>
+        <p class="flash__<%= key %> my-1"><%= value.html_safe %></p>
+      <% end -%>
     <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+    <div id='js_container'></div>
     <%= yield %>
   </body>
 </html>

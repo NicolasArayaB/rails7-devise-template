@@ -1,0 +1,62 @@
+<div class='nav-bg sticky-top'>
+  <div class='container-fluid'>
+    <div class='row align-items-end py-4'>
+      <div class='col-2'>
+        <%=
+          image_tag('Horizontal_blanco.png',
+          :width => '200rem',
+          :alt => 'Logo',
+          class: 'navbar-brand')
+        %>
+      </div>
+      <div class='col-8'>
+        <h1 class='text-center'>Template</h1>
+      </div>
+      <div class='col-2'></div>
+      <% if user_signed_in? %>
+        <div class='navbar-nav session-menu col'>
+          <div class='row justify-content-end'>
+            <div class='dropdown nav-item col-4'>
+              <%=
+                link_to "Hola #{current_user.first_name} ",
+                '#', class: 'dropdown-toggle nav-link me-4 col-2',
+                role: 'button', id: "dropdownMenuLink",
+                data: {'bs-toggle' => 'dropdown'}, aria: {expanded: 'false'}
+              %>
+              <ul class='dropdown-menu mt-2 col-4' aria-labelledby='dropdownMenuLink'>
+                <% if current_user.role == 'admin' %>
+                  <li class='mx-2 mb-1'><%= link_to 'Crear nuevo usuario', new_user_registration_path %></li>
+                <% end %>
+                <li class='ms-2 mb-3'><%= link_to 'Cambiar contraseña', edit_user_registration_path, method: :get, :class => 'drop-drown-item' %></li><hr/>
+                <li class='mx-2'><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, :class => 'drop-drown-item' %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <nav class='navbar navbar-dark navbar-expand-md d-flex'>
+        <button class="navbar-toggler float-right ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <div class='col-4'></div>
+            <ul class='navbar-nav m-auto col justify-content-center'>
+              <li class='nav-item'><%= link_to 'View 1', '#', :class => 'nav-link' %></li>
+              <li class='nav-item'><%= link_to 'View 2', '#''#', :class => 'nav-link' %></li>
+            </ul>
+            <div class='col-2 mx-4'>
+              <%= form_tag requirements_search_path, method: 'get', class: 'input-group', remote: true do %>
+                <%= text_field :search, params[:search], class: 'form-control' %>
+                <%= submit_tag 'Search', class: 'btn btn-outline-secondary' %>
+              <% end %>
+            </div>
+          <div class='col-md-2'>
+            <div id="notifications" style="z-index: 9999999; position: absolute;"></div>
+          </div>
+        </div>
+      </nav>
+    <% end %>
+  </div>
+</div>
