@@ -1,0 +1,54 @@
+<div class='container-fluid login-bg'>
+  <div class='row align-items-center p-3 mt-5'>
+    <div class='col-md-6'>
+      <%=
+        image_tag 'Horizontal_color.png',
+        :width => '70%',
+        :alt => 'Logo',
+        :class => 'mx-auto me-5 d-block'
+      %>
+    </div>
+
+    <div class='col-md-6 px-5'>
+      <h2>Cambiar contraseña</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render 'devise/shared/error_messages', resource: resource %>
+
+        <div class='field my-3'>
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Esperando confirmación de: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class='field my-3'>
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: 'new-password' %>
+          <% if @minimum_password_length %>
+            <br />
+            <em>Minimo <%= @minimum_password_length %> caracteres</em>
+          <% end %>
+        </div>
+
+        <div class='field my-3'>
+          <%= f.label :password_confirmation, 'Confirma tu nueva contraseña' %><br />
+          <%= f.password_field :password_confirmation, autocomplete: 'new-password' %>
+        </div>
+
+        <div class='field my-3'>
+          <%= f.label :current_password, 'Contraseña actual' %> <i>(Necesitamos tu contraseña actual para realizar los cambios)</i><br />
+          <%= f.password_field :current_password, autocomplete: 'current-password' %>
+        </div>
+
+        <div class='actions'>
+          <%= f.submit 'Enviar' %>
+        </div>
+      <% end %>
+
+      <%= link_to 'Atrás', :back %>
+    </div>
+  </div>
+</div>
