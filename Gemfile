@@ -73,5 +73,9 @@ group :test do
   gem 'webdrivers'
 end
 
-#Bootstrap 5
-gem'bootstrap'
+# Bootstrap 5
+gem 'bootstrap'
+
+# CanCanCan is an authorization library for Ruby and Ruby on Rails which restricts what resources a given user is allowed to access.
+# More info at: https://github.com/CanCanCommunity/cancancan
+gem 'cancancan'
