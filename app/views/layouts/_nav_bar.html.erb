@@ -24,11 +24,11 @@
                 data: {'bs-toggle' => 'dropdown'}, aria: {expanded: 'false'}
               %>
               <ul class='dropdown-menu mt-2 col-4' aria-labelledby='dropdownMenuLink'>
-                <% if current_user.role == 'admin' %>
+                <% if current_user.roles.first == 'admin' %>
                   <li class='mx-2 mb-1'><%= link_to 'Crear nuevo usuario', new_user_registration_path %></li>
                 <% end %>
                 <li class='ms-2 mb-3'><%= link_to 'Cambiar contraseña', edit_user_registration_path, method: :get, :class => 'drop-drown-item' %></li><hr/>
-                <li class='mx-2'><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, :class => 'drop-drown-item' %></li>
+                <li class='mx-2'><%= button_to 'Cerrar sesión', destroy_user_session_path, method: :delete, :class => 'btn btn-default btn-sm drop-drown-item' %></li>
               </ul>
             </div>
           </div>
@@ -47,10 +47,10 @@
               <li class='nav-item'><%= link_to 'View 2', '#''#', :class => 'nav-link' %></li>
             </ul>
             <div class='col-2 mx-4'>
-              <%= form_tag requirements_search_path, method: 'get', class: 'input-group', remote: true do %>
-                <%= text_field :search, params[:search], class: 'form-control' %>
-                <%= submit_tag 'Search', class: 'btn btn-outline-secondary' %>
-              <% end %>
+              <%#= form_tag operations_search_path, method: 'get', class: 'input-group', remote: true do %>
+                <%#= text_field :search, params[:search], class: 'form-control' %>
+                <%#= submit_tag 'Search', class: 'btn btn-outline-secondary' %>
+              <%# end %>
             </div>
           <div class='col-md-2'>
             <div id="notifications" style="z-index: 9999999; position: absolute;"></div>

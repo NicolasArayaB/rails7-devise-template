@@ -30,10 +30,10 @@
           <%= f.text_field :last_name, autocomplete: 'last_name', required: true, :class => 'login-input my-2', :placeholder => 'Ingresar apellido' %>
         </div>
 
-        <%# <div class='field'> %>
-          <%#= f.label :role, 'Cargo' %>
-          <%#= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
-        <%# </div>  %>
+        <div class='field'>
+          <%= f.label :role, 'Cargo' %>
+          <%#= f.collection_select(:role, Role.all, :to_s, lambda{|i| i.to_s.humanize}) %>
+        </div> 
 
         <div class='field'>
           <%= f.label :password, 'Contraseña' %>
