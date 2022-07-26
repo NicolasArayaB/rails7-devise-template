@@ -48,8 +48,6 @@ gem 'sassc-rails'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
 
-gem 'devise', '~> 4.8'
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
@@ -75,6 +73,19 @@ end
 
 # Bootstrap 5
 gem 'bootstrap'
+
+# Authentication gem. More info at: https://github.com/heartcombo/devise
+gem 'devise', '~> 4.8'
+
+# Integrate Google sign in with Devise using omniauth, omniauth-google-oauth2 and omniauth-rails_csrf_protection:
+# More info at: https://github.com/omniauth/omniauth
+gem 'omniauth'
+
+# More info at: https://github.com/zquestz/omniauth-google-oauth2
+gem 'omniauth-google-oauth2'
+
+# Mitigate CSRF on the request phase when using OmniAuth gem More info at: https://github.com/cookpad/omniauth-rails_csrf_protection
+gem "omniauth-rails_csrf_protection"
 
 # CanCanCan is an authorization library for Ruby and Ruby on Rails which restricts what resources a given user is allowed to access.
 # More info at: https://github.com/CanCanCommunity/cancancan
